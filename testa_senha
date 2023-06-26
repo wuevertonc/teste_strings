@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <locale.h>
+#include <string.h>
+//testando senha
+int main(){
+	setlocale(LC_ALL,"portuguese");
+	char email[50], senha1[10],senha2[10];
+	char dig;
+//insere email e verifica com o usuário se está correto	
+	do{
+		printf("digite o email:");
+		fgets(email,50,stdin);
+		fflush(stdin);
+		printf("o email %s está correto? S ou N\n",email);
+		scanf("%c",&dig);
+		fflush(stdin);
+			if(dig=='n'||dig=='N'){
+				printf("digite o email:");
+				fgets(email,50,stdin);
+				fflush(stdin);
+			}
+	}while(dig!='s' && dig!='S');
+//insere senha e testa
+	do{
+		printf("digite a senha:");
+		fgets(senha1,10,stdin);
+		fflush(stdin);
+		printf("repita a senha:");
+		fgets(senha2,10,stdin);
+		fflush(stdin);
+			if(strcmp(senha1,senha2)!=0){
+				printf("senhas não são compatíveis\n");
+			}
+	}while(strcmp(senha1,senha2)!=0);
+//exibe resultados
+	printf("o email é %s e a senha é %s\n", email,senha1);
+	return 0;
+}
